@@ -12,9 +12,53 @@ public class UserService {
         SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
         try{
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-            return userMapper.getAllUsers();
+            return userMapper.findAll();
         }finally{
             sqlSession.close();
         }
     }
+
+    public User findById(Integer userId) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            return userMapper.selectByPrimaryKey(userId);
+        }finally{
+            sqlSession.close();
+        }
+    }
+
+    public void insert(User user){
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            userMapper.insert(user);
+            sqlSession.commit();
+        }finally{
+            sqlSession.close();
+        }
+    }
+
+    public void deleteUser(Integer userId) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            userMapper.deleteByPrimaryKey(userId);
+            sqlSession.commit();
+        }finally{
+            sqlSession.close();
+        }
+    }
+
+    public void updateUser(User user) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+        try {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            userMapper.updateByPrimaryKey(user);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
 }

@@ -5,11 +5,18 @@ import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import javax.inject.Inject;
+
 @Getter
 @Setter
 public class DTOHello {
     private String name;
     private String message;
+
+    @Inject
+    public DTOHello() {
+        name = "HELLO : ";
+    }
 
     @Override
     public String toString() {

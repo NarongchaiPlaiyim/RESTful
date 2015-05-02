@@ -4,7 +4,7 @@
 
 <mapper namespace="com.ese.mapper.UserMapper">
 
-    <resultMap type="User" id="UserResult">
+    <resultMap type="userModel" id="UserResult">
         <id property="id" column="id"/>
         <result property="personId" column="person_id"/>
         <result property="userName" column="username"/>
@@ -17,8 +17,35 @@
         <result property="active" column="active"/>
     </resultMap>
 
-    <select id="getAllUsers" resultMap="UserResult">
+    <select id="findAll" resultMap="UserResult">
         SELECT * FROM USER
     </select>
+
+    <select id="selectByPrimaryKey" resultMap="UserResult">
+        SELECT * FROM USER WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="userModel" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO USER(person_id, username, name, password, email, facebook, department, role, active)
+        VALUES(#{personId}, #{userName}, #{name}, #{password}, #{email}, #{facebook}, #{department}, #{role}, #{active})
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="int">
+        DELETE FROM USER WHERE id = #{id}
+    </delete>
+
+    <update id="updateByPrimaryKey" parameterType="userModel">
+        UPDATE USER SET
+        person_id = #{personId},
+        username = #{userName},
+        name = #{name},
+        password = #{password},
+        email = #{email},
+        facebook = #{facebook},
+        department = #{department},
+        role = #{role},
+        active = #{active}
+        WHERE id = #{id}
+    </update>
 
 </mapper>

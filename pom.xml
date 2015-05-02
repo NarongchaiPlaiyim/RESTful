@@ -55,11 +55,12 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.35</version>
         </dependency>
-
     </dependencies>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java-version>1.7</java-version>
+        <javaee-api-version>7.0</javaee-api-version>
     </properties>
 
 	<build>
@@ -68,8 +69,8 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
