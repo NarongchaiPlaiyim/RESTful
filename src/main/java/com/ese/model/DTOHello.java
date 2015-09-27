@@ -13,7 +13,7 @@ public class DTOHello {
     private String name;
     private String message;
 
-    @Inject
+//    @Inject
     public DTOHello() {
         name = "HELLO : ";
     }

@@ -5,19 +5,35 @@ import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 @Getter
 @Setter
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
 public class User {
-
+    @XmlElement
     private Integer id;
+    @XmlElement
     private String personId;
+    @XmlElement
     private String userName;
+    @XmlElement
     private String name;
+    @XmlElement
     private String password;
+    @XmlElement
     private String email;
+    @XmlElement
     private String facebook;
+    @XmlElement
     private String department;
+    @XmlElement
     private String role;
+    @XmlElement
     private Integer active;
 
     @Override
